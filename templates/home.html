@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% block title %}
+    <head>
+        <title>Barbershop</title>
+        <link href="static/design.css" rel="stylesheet">
+    </head>
+{% endblock %}
+{% block main %}
+    <body onload="JavaScript:AutoRefresh(3000);">
+        <div class="container-fluid">
+            Welcome To {{store}}
+        </div>
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/choose">Choose</a>
+            <a href="/ids">Get ID</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <h1 style="text-align:center">Barbers</h1>
+        <form action="/newbarber" method="get">
+            <button class="btn btn-primary" type="submit">Create Barber</button>
+        </form>
+        <div class="row">
+            {% for x in barbers %}
+                <div class="column2">
+                    <div class="card">
+                        <h1>{{ x["name"] }}</h1>
+                        <p class="wait">Wait Time: {{ x["wait"] }} minutes</p>
+                        <p>Chair Number: {{ x["chair"] }}</p>
+                        <form action="/choose" method="get" class="butn">
+                            <button class="btn btn-primary" type="submit">Select Barber</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <h3>
+            <form action="/reset" method="get">
+                <button class="btn btn-primary" type="submit">Reset</button>
+            </form>
+        </h3>
+    </body>
+    <script type="text/JavaScript">
+         <!--
+            function AutoRefresh( t ) {
+               setTimeout("location.reload(true);", t);
+            }
+         //-->
+      </script>
+{% endblock %}

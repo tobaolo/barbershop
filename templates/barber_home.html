@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% block title %}
+    <head>
+        <title>Barbershop</title>
+        <link href="static/design.css" rel="stylesheet">
+    </head>
+{% endblock %}
+{% block main %}
+    <body>
+        <div class="container-fluid">
+            {{store}}: {{barber}}
+        </div>
+        <div class="topnav">
+            <a href="/barber_home">Refresh</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="row">
+            <div class="column">
+                <center>
+                <h1>In Progress</h1>
+                <div class="cardtwo">
+                    <h1> {{current}} </h1>
+                    <form action="/nxt" method="get">
+                        <button id="finish" class="btn btn-primary" type="submit">Finished</button>
+                    </form>
+                </div>
+                <h1>Next...</h1>
+                <div class="cardtwo">
+                    <h1> {{next_client}} </h1>
+                </div>
+            </div>
+            <div class="column">
+                <img src="https://data.whicdn.com/images/126088567/original.gif">
+            </div>
+        </center>
+    </body>
+    <script>
+            if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+    </script>
+   {% endblock %}
+</html>
+

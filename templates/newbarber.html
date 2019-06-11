@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% block title %}
+    <head>
+        <title>Create New Barber</title>
+        <link href="static/design.css" rel="stylesheet">
+    </head>
+{% endblock %}
+{% block main %}
+    <body>
+        <div class="container-fluid">
+            {{store}}
+        </div>
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/choose">Choose</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="center">
+                    <h1>Create New Barber</h1>
+                    <form action="/newbarber" method="post">
+                        <input autocomplete="off" autofocus class="form-control" name="barber" placeholder="Enter Barber Name" type="text">
+                        <input autocomplete="off" autofocus class="form-control" name="chair" placeholder="Enter Chair Nmber" type="text">
+                        <br><button class="button" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+            <div class="column">
+                <img src="https://data.whicdn.com/images/126088567/original.gif">
+            </div>
+        </div>
+    </body>
+
+        <script>
+
+        document.querySelector('form').onsubmit = function() {
+            if (!document.querySelector("div.form-group input[name='name']").value) {
+                alert('You need to input your name');
+                return false;
+            }
+            else if (!document.querySelector("div.form-check input[name='sport']").value) {
+                alert('You need to choose your favorite sport');
+                return false;
+            }
+            else if (!document.querySelector('select').value) {
+                alert('You need to choose your region');
+                return false;
+            }
+            return true;
+        }
+    </script>
+    {% endblock %}
+</html>

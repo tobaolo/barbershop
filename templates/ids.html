@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% block title %}
+    <head>
+        <title>Barbershop</title>
+        <link href="static/design.css" rel="stylesheet">
+    </head>
+{% endblock %}
+{% block main %}
+    <body>
+        <div class="container-fluid">
+        </div>
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/choose">Choose</a>
+            <a href="/logout">Logout</a>
+            <a href="/ids">Get ID</a>
+        </div>
+        <h1 style="text-align:center">IDs</h1>
+        <p>Store ID: {{ iden }}</p><br>
+        <div class="row">
+            {% for x in barbers %}
+                <div class="column2">
+                    <p>Name: {{ x["name"] }}</p>
+                    <p>Barber ID: {{ x["id"] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+    {% endblock %}
+</html>

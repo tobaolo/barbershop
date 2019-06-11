@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% block title %}
+    <head>
+        <title>Barbershop</title>
+        <link href="static/design.css" rel="stylesheet">
+    </head>
+{% endblock %}
+{% block main %}
+    <body>
+        <div class="container-fluid">
+            {{store}}
+        </div>
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/choose">Choose</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <h1 style="text-align:center">Choose Your Barber</h1>
+        <div class="row">
+            <div class="column">
+                <div class="center">
+                    <h4>Select your barber and write your name to join the queue</h4>
+                    <form action="/choose" method="post">
+                        <select autofocus class="form-control" name="barber" style="width: 200px;">
+                            <option selected disabled>Barbers</option>
+                            {% for x in barbers %}
+                            <option value="{{ x["name"] }}">{{ x["name"] }}</option>
+                            {% endfor %}
+                        </select><br>
+                        <input autocomplete="off" autofocus class="form-control" name="client" placeholder="Name" type="text">
+                        <br><button class="button" type="submit">Select Barber</button>
+                    </form>
+                </div>
+            </div>
+            <div class="column">
+                <img src="https://data.whicdn.com/images/126088567/original.gif">
+            </div>
+        </div>
+{% endblock %}
+</html>
